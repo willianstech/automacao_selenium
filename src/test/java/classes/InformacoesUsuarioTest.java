@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,10 +21,6 @@ import suporte.Generator;
 import suporte.Screenshot;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
-
-
-@RunWith(DataDrivenTestRunner.class)
-@DataLoader(filePaths = "InformacoesUsuarioTestData.csv")
 
 public class InformacoesUsuarioTest {
     private WebDriver navegador;
@@ -35,37 +32,26 @@ public class InformacoesUsuarioTest {
     public void setUp()
     {
         // Abrindo o Navegador
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\739165\\Documents\\drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Will\\Desktop\\automacao_selenium\\src\\test\\java\\suporte\\chromedriver.exe");
         navegador = new ChromeDriver();
         navegador.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         // Navegando para a pagina do olx
-        navegador.get("http://www.juliodelima.com.br/taskit");
+        navegador.get("https://www.submarino.com.br/");
 
         // Clicar no link que possui o "SIGN IN"
-        navegador.findElement(By.linkText("Sign in")).click();
+        
 
-        // Identificando o formulario de login
-        // Identificando o formulario de login
-        // Identificando o formulario de login
-        // Identificando o formulario de login
-        WebElement formularioSignInBox = navegador.findElement(By.id("signinbox"));
+        Actions actions = new Actions(navegador);
+        WebElement menu = navegador.findElement(By.className("usr-grt-text"));
+        actions.moveToElement(menu);
 
-        // Digitar no campo com nome "login" que está dentro do formulario de id "signinbox" o texto "julio0001"
-        formularioSignInBox.findElement(By.name("login")).sendKeys("julio0001");
-
-        // Digitar no campo com nome "password" que está dentro do formulario de id "signinbox" o texto "123456"
-        formularioSignInBox.findElement(By.name("password")).sendKeys("123456");
-
-        // Clicar no link com o texto "SIGN IN"
-        navegador.findElement(By.linkText("SIGN IN")).click();
-
-        // Clicar em um link que possui a class "me"
-        navegador.findElement(By.className("me")).click();
-
-        // Clicar em um link que possui o texto "MORE DATA ABOUT YOU"
-
-        navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
+        WebElement subMenu = navegador.findElement(By.id("h_usr-signin"));
+        actions.moveToElement(subMenu);
+        actions.click().build().perform();
+        
+        
+        
     }
 
   
