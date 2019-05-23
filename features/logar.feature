@@ -1,7 +1,7 @@
 Feature: logar
 	Eu como usuario do site submarino
 	Quero realizar login
-	Para ter acesso as minhas informações
+	Para ter acesso as minhas informacoes
 
 #Cenario positivo
 Scenario: Realizar login

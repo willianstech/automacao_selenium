@@ -43,7 +43,7 @@ public class InformacoesUsuarioTest {
         
 
         Actions actions = new Actions(navegador);
-        WebElement menu = navegador.findElement(By.className("usr-grt-text"));
+        WebElement menu = navegador.findElement(By.id("h_user"));
         actions.moveToElement(menu);
 
         WebElement subMenu = navegador.findElement(By.id("h_usr-signin"));

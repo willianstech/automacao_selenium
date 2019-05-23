@@ -12,7 +12,9 @@ import cucumber.api.junit.Cucumber;
 		monochrome = true,
 		snippets = SnippetType.CAMELCASE,
 		dryRun = false,
-		strict = false)
+		strict = false,
+		glue = "stepDefinition",
+		features = "features")
 public class Executor {
 
 }
