@@ -1,5 +1,7 @@
-package tests;
+package classes;
 
+import org.easetech.easytest.annotation.DataLoader;
+import org.easetech.easytest.runner.DataDrivenTestRunner;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -66,32 +68,7 @@ public class InformacoesUsuarioTest {
         navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
     }
 
-    @Test
-    //testing
-    public void testAdicionarUmaInformacaoAdicionalDoUsuario (@Parameterized.Parameters(name="tipo")String tipo, @Parameterized.Parameters(name="contato")String contato, @Parameterized.Parameters(name="mensagemEsperada")String mensagemEsperada)
-            {
-
-        // Clicar no botão através do XPATH //button[@data-target="addmoredata"]
-        navegador.findElement(By.xpath("//button[@data-target=\"addmoredata\"]")).click();
-
-        // Identificar a popup onde está o formulario de id addmoredata
-        WebElement popUpAddMoreData = navegador.findElement(By.id("addmoredata"));
-
-        // No combo de name "type" escolhe a opção PHONE
-        WebElement campoType = popUpAddMoreData.findElement(By.name("type"));
-        new Select(campoType).selectByVisibleText(tipo);
-
-        // No campo de name "contact' digitar "+5511999991111"
-        popUpAddMoreData.findElement(By.name("contact")).sendKeys(contato);
-
-        // Clicar no link de text "SAVE" que está no POPUP
-        popUpAddMoreData.findElement(By.linkText("SAVE")).click();
-
-        // Na mensagem de ID "toast-container" validar que o texto é "Your contact has been added!"
-        WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
-        String mensagem = mensagemPop.getText();
-        assertEquals(mensagemEsperada, mensagem);
-    }
+  
 
     @Test
     public void removerUmContatoDeUmUsuario()
